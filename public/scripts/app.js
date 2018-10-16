@@ -34,15 +34,33 @@ window.onload = function() {
         return false;
     });
     //listen for connections, add usernames
-    socket.on('sign-in', function(user){
-        console.log(user);
+    socket.on('sign-in', function(user, namesList){
+        // console.log(user);
+        // console.log(namesList);
         //get contacts section
         let contactList = document.getElementById('contacts-list');
-        //create new li
-        let node = document.createElement('LI');
-        //set the value to given username and add to ul
-        node.innerHTML = user;
-        contactList.append(node);
+        //Iterate
+        namesList.forEach(function(name){
+            //create new li
+            let node = document.createElement('LI');
+            //set the value to given username and add to ul
+            node.innerHTML = name;
+            contactList.append(node);
+        });
+    });
+    //listen for disconnect, remove usernames
+    window.addEventListener(onunload, function(){
+        
+        let username = localStorage.getItem('username');
+        socket.emit('sign-out', username);
+    });
+    socket.on('sign-out', function(user, namesList){
+        //
+        // let name = namesList.filter(function(i){return (i == user)});
+        console.log(name);
+        namesList.remove(name);
+        // localStorage.clear;
+
     });
     //listen for chat message event, add new message to display
     socket.on('chat message', function(msg){
