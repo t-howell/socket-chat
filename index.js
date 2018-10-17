@@ -49,12 +49,12 @@ io.on('connection', function(socket){
       }
         
       });
-      socket.on('sign-out', function(user){
-        // let name = userData.filter(function(i){return (i == user)});
-        // console.log('The name is ' + name);
+      // socket.on('sign-out', function(user){
+      //   // let name = userData.filter(function(i){return (i == user)});
+      //   // console.log('The name is ' + name);
 
-        io.emit('sign-out', user, namesList);
-      });
+      //   io.emit('sign-out', user, namesList);
+      // });
     socket.on('sign-in', function(user){
       console.log(socket.id);
       //adding username and id to the list
