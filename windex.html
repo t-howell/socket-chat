@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SocketChat</title>
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- custom css -->
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+  
+</head>
+
+<!-- <script>
+  $(function () {
+    let socket = io();
+    $('form').submit(function(){
+      socket.emit('chat message', $('#m').val());
+      $('#m').val('');
+      return false;
+    });
+    socket.on('chat message', function(msg){
+      $('#messages').append($('<li>').text(msg));
+    });
+  });
+</script> -->
+
+<body>
+    <!-- MODAL -->
+    <div id="modal">
+            <form id="modal-form" >
+                <fieldset>
+                    <label for="username">Name:</label>
+                    <input type="text" id="username" placeholder="Enter your name here...">
+                </fieldset><br />
+
+                    <input type="submit" value="Submit" id="name-submit">
+
+                
+            </form>
+            <p>*Please note that messages will not be saved.</p>
+    </div>
+    <div class="container">
+        <header>
+            <h1 id="name-heading"><span>
+                <img src="images/messenger-3.png" alt="msn icon"/>
+            </span>Name</h1>
+            
+        </header>
+        <div id="divider"></div>
+        
+
+        <!-- Messaging Interface-->
+        <div class="row">
+            <div class="col-8">
+                <ul id="messages">
+
+                </ul>
+            </div>
+            <div class="col-4 image">
+                <img src="images/buddy-bleu.png" alt="recipient image" width="150">
+            </div>
+        </div><!-- .row -->
+        <div class="row">
+            <div class="col-8">
+                <!-- <div id="message-form"> -->
+                    <form id="message-form" >
+                        
+                        <textarea id="message">
+                            
+                        </textarea>
+                        <input type="button" id="submit-button" value="Send">
+                    </form>
+                <!-- </div> -->
+            </div>
+            <div class="col-4 image" >
+                <img src="images/buddy-bleu.png" alt="user image" width="150">
+            </div>
+        </div><!-- .row -->
+        
+    </div><!-- .container -->
+    <div id="contacts">
+            <h2>Contacts</h2>
+            <ul id="contacts-list">
+
+            </ul>
+        </div>
+    <footer>
+        <!-- bootstrap scripts -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <!-- socket.io scripts-->
+        <script src="/socket.io/socket.io.js"></script>
+        <!-- <script src="https://code.jquery.com/jquery-1.11.1.js"></script> -->
+        <!-- custom scripts -->
+        <script src="scripts/app.js"></script>
+        <!-- rewriting above in vanilla js -->
+
+    </footer>
+</body>
+</html>

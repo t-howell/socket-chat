@@ -7,13 +7,14 @@ window.onload = function() {
     let messages = document.getElementById('messages');
     //get current message from textarea 
     let message = document.getElementById('message');
-    
-    //displayed name
+    //get contacts section
+    let contactList = document.getElementById('contacts-list');
 
     //get modal div
     let modalDiv = document.getElementById('modal');
     //hide modal on submit
     let nameSubmit = document.getElementById('name-submit');
+
     nameSubmit.addEventListener('click', function(e) {
         e.preventDefault();
         //set name
@@ -35,31 +36,41 @@ window.onload = function() {
     });
     //listen for connections, add usernames
     socket.on('sign-in', function(user, namesList){
-        // console.log(user);
-        // console.log(namesList);
-        //get contacts section
-        let contactList = document.getElementById('contacts-list');
+        console.log(user);
+        console.log(namesList);
+        //
+        console.log(Object.values(namesList));
         //Iterate
-        namesList.forEach(function(name){
+        contactList.clear;
+        namesList.forEach(function(user){
             //create new li
             let node = document.createElement('LI');
             //set the value to given username and add to ul
-            node.innerHTML = name;
+            node.innerHTML = user;
             contactList.append(node);
+
         });
     });
-    //listen for disconnect, remove usernames
-    window.addEventListener(onunload, function(){
-        
-        let username = localStorage.getItem('username');
-        socket.emit('sign-out', username);
-    });
-    socket.on('sign-out', function(user, namesList){
+    
+
+    socket.on('disconnect', function(){
         //
         // let name = namesList.filter(function(i){return (i == user)});
-        console.log(name);
-        namesList.remove(name);
+        // console.log(name);
+        let name = localStorage.getItem('username');
+        socket.emit('disconnect', name);
+        // namesList.remove(name);
         // localStorage.clear;
+        contactList.clear;
+        console.log(Object.values(namesList));
+        //Iterate
+        namesList.forEach(function(user){
+            //create new li
+            let node = document.createElement('LI');
+            //set the value to given username and add to ul
+            node.innerHTML = user;
+            contactList.append(node);
+        });
 
     });
     //listen for chat message event, add new message to display
@@ -79,3 +90,9 @@ window.onload = function() {
         
     });
 }
+//listen for disconnect, remove usernames
+// window.addEventListener(onunload, function(){
+        
+//     let username = localStorage.getItem('username');
+//     socket.emit('sign-out', username);
+// });
