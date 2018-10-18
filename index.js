@@ -3,10 +3,10 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const PORT = process.env.PORT;
 //Storing names list on the server side so that new users have a full list of online contacts.
 const userData = [];
 const namesList = [];
-let connectedUsers = {};
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/index.html');
@@ -81,6 +81,6 @@ io.on('connection', function(socket){
 app.use(express.static('public'));
 
 
-http.listen(3000, function(){
-  console.log('listening on *:3000');
+http.listen(PORT, function(){
+  console.log('listening on' + PORT);
 });
