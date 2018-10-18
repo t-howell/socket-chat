@@ -39,7 +39,7 @@ window.onload = function() {
         // console.log(user);
         // console.log(namesList);
         //
-        console.log(Object.values(namesList));
+        // console.log(Object.values(namesList));
         //Iterate
         contactList.innerHTML="";
         namesList.forEach(function(user){
@@ -61,15 +61,15 @@ window.onload = function() {
         // socket.emit('disconnect', name);
         // namesList.remove(name);
         // localStorage.clear;
-        console.log(namesList);
+        // console.log(namesList);
         //Reset contactList
         contactList.innerHTML="";
         // console.log(Object.values(namesList));
         //Iterate
         namesList.forEach(function(user){
             //create new li
-            console.log(user);
-            console.log(namesList);
+            // console.log(user);
+            // console.log(namesList);
             let node = document.createElement('LI');
             //set the value to given username and add to ul
             node.innerHTML = user;
