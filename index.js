@@ -24,15 +24,15 @@ io.on('connection', function(socket){
         //Get the name by index
         let data = Object.keys(userData)[index];
         nameValue = userData[data].name;
-        // console.log('name is ' + nameValue);
-        // console.log('names: ' + namesList);
+        console.log('name is ' + nameValue);
+        console.log('names: ' + namesList);
         //Remove name from namesList
         //Get the index of name
         nameIndex = namesList.findIndex(x => x == nameValue);
-        // console.log(nameIndex);
+        console.log(nameIndex);
         //remove
         namesList.splice(nameIndex);
-        // console.log('revised' + namesList);
+        console.log('revised' + namesList);
         // console.log('userData Index ' + index);
 
         //remove disconnected user data
