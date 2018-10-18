@@ -1,7 +1,8 @@
-let app = require('express')();
-let express = require('express');
-let http = require('http').Server(app);
-let io = require('socket.io')(http);
+
+const express = require('express');
+const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 //Storing names list on the server side so that new users have a full list of online contacts.
 const userData = [];
 const namesList = [];
