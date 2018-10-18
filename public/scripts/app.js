@@ -45,7 +45,7 @@ window.onload = function() {
         namesList.forEach(function(user){
             //create new li
             let node = document.createElement('LI');
-            //set the value to given username and add to ul
+            //set the value to given username and add to list
             node.innerHTML = user;
             contactList.append(node);
 
