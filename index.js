@@ -4,6 +4,7 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 const PORT = process.env.PORT;
+
 //Storing names list on the server side so that new users have a full list of online contacts.
 const userData = [];
 const namesList = [];
@@ -23,9 +24,8 @@ io.on('connection', function(socket){
         //Get the name by index
         let data = Object.keys(userData)[index];
         nameValue = userData[data].name;
-        console.log('name is ' + nameValue);
-        //
-        console.log('names: ' + namesList);
+        // console.log('name is ' + nameValue);
+        // console.log('names: ' + namesList);
         //Remove name from namesList
         //Get the index of name
         nameIndex = namesList.findIndex(x => x == nameValue);
@@ -57,7 +57,7 @@ io.on('connection', function(socket){
       //   io.emit('sign-out', user, namesList);
       // });
     socket.on('sign-in', function(user){
-      console.log(socket.id);
+      // console.log(socket.id);
       //adding username and id to the list
       let userObj = {
         id: socket.id,
@@ -68,12 +68,12 @@ io.on('connection', function(socket){
       //Add name to namesList (client)
       namesList.push(userObj.name);
 
-      console.log(namesList);
-      console.log(userData);
+      // console.log(namesList);
+      // console.log(userData);
       io.emit('sign-in', user, namesList);
     });
-      socket.on('chat message', function(msg){
-          io.emit('chat message',msg);
+      socket.on('chat message', function(msg, user){
+          io.emit('chat message', msg, user);
       });
 });
 
@@ -81,6 +81,6 @@ io.on('connection', function(socket){
 app.use(express.static('public'));
 
 
-http.listen(PORT, function(){
+http.listen(3000, function(){
   console.log('listening on' + PORT);
 });

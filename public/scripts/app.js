@@ -36,8 +36,8 @@ window.onload = function() {
     });
     //listen for connections, add usernames
     socket.on('sign-in', function(user, namesList){
-        console.log(user);
-        console.log(namesList);
+        // console.log(user);
+        // console.log(namesList);
         //
         console.log(Object.values(namesList));
         //Iterate
@@ -62,7 +62,7 @@ window.onload = function() {
         // namesList.remove(name);
         // localStorage.clear;
         contactList.clear;
-        console.log(Object.values(namesList));
+        // console.log(Object.values(namesList));
         //Iterate
         namesList.forEach(function(user){
             //create new li
@@ -74,13 +74,13 @@ window.onload = function() {
 
     });
     //listen for chat message event, add new message to display
-    socket.on('chat message', function(msg){
+    socket.on('chat message', function(msg, user){
 
         //create new message node variable
         let messageNode = document.createElement('LI');
 
         //add the message value to the new message element
-        messageNode.innerHTML = (localStorage.getItem('username') + ': ' + msg);
+        messageNode.innerHTML = (user + ': ' + msg);
         messages.append(messageNode);
 
         //get form for reset
