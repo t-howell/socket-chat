@@ -41,7 +41,7 @@ window.onload = function() {
         //
         console.log(Object.values(namesList));
         //Iterate
-        contactList.clear;
+        contactList.innerHTML="";
         namesList.forEach(function(user){
             //create new li
             let node = document.createElement('LI');
@@ -53,15 +53,17 @@ window.onload = function() {
     });
     
 
-    socket.on('disconnect', function(){
+    socket.on('disconnect', function(namesList){
         //
         // let name = namesList.filter(function(i){return (i == user)});
         // console.log(name);
-        let name = localStorage.getItem('username');
-        socket.emit('disconnect', name);
+        // let name = localStorage.getItem('username');
+        // socket.emit('disconnect', name);
         // namesList.remove(name);
         // localStorage.clear;
-        contactList.clear;
+
+        //Reset contactList
+        contactList.innerHTML="";
         // console.log(Object.values(namesList));
         //Iterate
         namesList.forEach(function(user){
