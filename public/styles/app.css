@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
     /* height: inherit; */
     margin: 0 auto;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Roboto', sans-serif;
 }
 header {
     text-align: center;
@@ -118,6 +119,18 @@ div#modal > p {
 }
 #contacts-list {
     padding: 0;
+}
+@keyframes fade-in {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+#contacts-list li:last-of-type {
+    animation-name: fade-in;
+    animation-duration: 2s;
+}
+#messages li:last-of-type {
+    animation-name: fade-in;
+    animation-duration: 0.6s;
 }
 #top {
     display: grid;
