@@ -1,6 +1,10 @@
 window.onload = function() {
     //create socket variable
     let socket = io();
+    //get textarea
+    // let messageArea = document.getElementById('message');
+    //get form to listen for enter/submit
+    let messageForm = document.getElementById('message-form');
     //get button to listen for submit
     let btn = document.getElementById('submit-button');
     //create messages variable for output message display
@@ -26,7 +30,14 @@ window.onload = function() {
         modalDiv.classList.add('hidden');
         return false;
     });
-
+    //Trigger button click with enter key
+    message.addEventListener('keydown', function(e) {
+        // e.preventDefault();
+        console.log(e.key);
+        if (e.key == "Enter") {
+            btn.click();
+        }
+    });
     //listen for click event, emit chat message event
     btn.addEventListener('click', function(e){
         e.preventDefault();
@@ -34,6 +45,7 @@ window.onload = function() {
         socket.emit('chat message', message.value, localStorage.getItem('username'));
         return false;
     });
+
     //listen for connections, add usernames
     socket.on('sign-in', function(user, namesList){
         // console.log(user);
