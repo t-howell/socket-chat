@@ -33,7 +33,7 @@ window.onload = function() {
     //Trigger button click with enter key
     message.addEventListener('keydown', function(e) {
         // e.preventDefault();
-        console.log(e.key);
+        // console.log(e.key);
         if (e.key == "Enter") {
             btn.click();
         }
